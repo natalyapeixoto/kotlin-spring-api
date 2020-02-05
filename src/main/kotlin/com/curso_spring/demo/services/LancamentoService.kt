@@ -2,11 +2,12 @@ package com.curso_spring.demo.services
 
 
 import com.curso_spring.demo.documents.Lancamento
+import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageRequest
 
 interface LancamentoService {
 
-    fun buscarPorFuncionarioId(funcionarioId: String, pageRequest: PageRequest) : Lancamento
+    fun buscarPorFuncionarioId(funcionarioId: String, pageRequest: PageRequest) : Page<Lancamento>
 
     fun buscarPorId(id: String): Lancamento?
 

@@ -51,17 +51,17 @@ class LancamentoServiceTest {
         Assertions.assertNotNull(lancamento)
     }
 
-    @Test
-    fun testBucarLancamentoPorId() {
-        val lancamento: Lancamento? = lancamentoService?.buscarPorId(id)
-        Assertions.assertNotNull(lancamento)
-    }
-
-    @Test
-    fun testPersistirLancamento() {
-        val lancamento: Lancamento? = lancamentoService?.persistir(lancamento())
-        Assertions.assertNotNull(lancamento)
-    }
+//    @Test
+//    fun testBucarLancamentoPorId() {
+//        val lancamento: Lancamento? = lancamentoService?.buscarPorId(id)
+//        Assertions.assertNotNull(lancamento)
+//    }
+//
+//    @Test
+//    fun testPersistirLancamento() {
+//        val lancamento: Lancamento? = lancamentoService?.persistir(lancamento())
+//        Assertions.assertNotNull(lancamento)
+//    }
 
     private fun lancamento(): Lancamento = Lancamento(Date(), TipoEnum.INICIO_TRABALHO, id)
 
