@@ -37,9 +37,9 @@ class LancamentoServiceTest {
     @Throws(Exception::class)
     fun setUp() {
         BDDMockito
-                .given<Page<Lancamento>>(lancamentoRepository?.findByFuncionarioId(id, PageRequest(0,10)))
+                .given<Page<Lancamento>>(lancamentoRepository?.findByFuncionarioId(id, PageRequest.of(0,10)))
                 .willReturn(PageImpl(ArrayList<Lancamento>()))
-        BDDMockito.given(lancamentoRepository?.findOne("1")).willReturn(lancamento())
+        BDDMockito.given(lancamentoRepository?.findById(id)).willReturn(Optional.of(lancamento()))
         BDDMockito.given(lancamentoRepository?.save(Mockito.any(Lancamento::class.java)))
                 .willReturn(lancamento())
 
@@ -47,15 +47,15 @@ class LancamentoServiceTest {
 
     @Test
     fun testBuscarLancamentoPorFuncionarioId() {
-        val lancamento: Page<Lancamento>? = lancamentoService?.buscarPorFuncionarioId(id, PageRequest(0, 10))
+        val lancamento: Page<Lancamento>? = lancamentoService?.buscarPorFuncionarioId(id, PageRequest.of(0, 10))
         Assertions.assertNotNull(lancamento)
     }
 
-//    @Test
-//    fun testBucarLancamentoPorId() {
-//        val lancamento: Lancamento? = lancamentoService?.buscarPorId(id)
-//        Assertions.assertNotNull(lancamento)
-//    }
+    @Test
+    fun testBucarLancamentoPorId() {
+        val lancamento: Lancamento? = lancamentoService?.buscarPorId(id)
+        Assertions.assertNotNull(lancamento)
+    }
 //
 //    @Test
 //    fun testPersistirLancamento() {
